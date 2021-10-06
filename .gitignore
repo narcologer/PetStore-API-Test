@@ -1,0 +1,6 @@
+# Project exclude paths
+/target/
+/src/main/resources/my.properties
+/src/test/resources/my.properties
+/.idea/
+*.iml
