@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
@@ -84,5 +85,17 @@ public class StoreApiTest {
                 .get("/store/order/{orderId}")
                 .then()
                 .statusCode(404);
+    }
+
+    @Test
+    public void downloadInventories(){
+        Map inventories =
+        given()
+                .when()
+                .get("/store/inventory")
+                .then()
+                .statusCode(200)
+                .extract().body().as(Map.class);
+        Assert.assertTrue(inventories.containsKey("loser"), "Inventory не содержит статус loser");
     }
 }
